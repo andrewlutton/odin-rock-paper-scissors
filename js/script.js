@@ -12,19 +12,28 @@ function computerPlay() {
             break;
     }
 
-    return(play);
+    return (play);
 }
 
 //Get Random Integer between two numbers, inclusive
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() *(max - min + 1) + min);
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
-console.log(computerPlay());
-console.log(computerPlay());
-console.log(computerPlay());
-console.log(computerPlay());
-console.log(computerPlay());
-console.log(computerPlay());
-console.log(computerPlay());
+
+// Evaluate Game Result
+function playEval(playerSelection, computerSelection) {
+    if (playerSelection === computerSelection) {
+        message = "Draw!";
+    } else if (
+        playerSelection === "Rock" && computerSelection === "Scissors" ||
+        playerSelection === "Paper" && computerSelection === "Rock" ||
+        playerSelection === "Scissors" && computerSelection === "Paper") {
+        
+            message = "You win! " + playerSelection + " beats " + computerSelection;
+    } else {
+        message = "You lose! " + computerSelection + " beats " + playerSelection;
+    }
+    return (message);
+}
