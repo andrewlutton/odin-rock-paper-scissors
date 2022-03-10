@@ -22,20 +22,20 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// Evaluate Game Result
-function roundEval(playerSelection, computerSelection) {
+// Evaluate Game Result: return ["winner", "message"]
+function roundEval(roundNum, playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        message = "Draw!";
+        result = ["draw", "Round " + roundNum + ": Draw!"];
     } else if (
         playerSelection === "Rock" && computerSelection === "Scissors" ||
         playerSelection === "Paper" && computerSelection === "Rock" ||
         playerSelection === "Scissors" && computerSelection === "Paper") {
 
-        message = "You win! " + playerSelection + " beats " + computerSelection;
+        result = ["player", "Round " + roundNum + ": You win the round! " + playerSelection + " beats " + computerSelection];
     } else {
-        message = "You lose! " + computerSelection + " beats " + playerSelection;
+        result = ["computer", "Round " + roundNum + ": You lose the round! " + computerSelection + " beats " + playerSelection];
     }
-    return (message);
+    return (result);
 }
 
 //Get player selection
@@ -57,15 +57,40 @@ function playerPlay() {
 }
 
 //Handle single round
-function playRound() {
+function playRound(roundNum) {
     let computerSelection = computerPlay();
     let playerSelection = playerPlay();
-    console.log(roundEval(playerSelection, computerSelection));
+    let results = roundEval(roundNum, playerSelection, computerSelection);
+    let winner = results[0];
+    console.log(results[1]);
+    return(winner);
 }
 
 function game() {
+    
+    let playerScore = 0
+    let computerScore = 0
+    
     for (let i = 0; i < 5; i++) {
-        playRound();
+        switch (playRound(i + 1)) {
+            case "player":
+                playerScore++;
+                break;
+            case "computer":
+                computerScore++;
+                break;
+            case "draw":
+                break;
+        };
+    }
+    console.log("Your score: " + playerScore);
+    console.log("Computer score: " + computerScore);
+    if (playerScore > computerScore) {
+        console.log("You win!");
+    } else if ( playerScore < computerScore) {
+        console.log("You lose!");
+    } else {
+        console.log("Draw!")
     }
 }
 
