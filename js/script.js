@@ -23,7 +23,7 @@ function getRandomInt(min, max) {
 }
 
 // Evaluate Game Result
-function playEval(playerSelection, computerSelection) {
+function roundEval(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         message = "Draw!";
     } else if (
@@ -37,3 +37,22 @@ function playEval(playerSelection, computerSelection) {
     }
     return (message);
 }
+
+function playRound() {
+    let playerString = "";
+    while (playerString === "") {
+        
+        let str = prompt("Select Rock, Paper, or Scissors:");
+        str = str.toLowerCase();
+        str = str.charAt(0).toUpperCase() + str.slice(1);
+        
+        if (str === "Rock" || str === "Paper" || str === "Scissors") {
+            playerString = str;
+        } else {
+            console.log("Player must choose rock, paper, or scissors. Please try again.");
+        }
+    }
+    return(playerString);
+}
+
+console.log(playRound());
