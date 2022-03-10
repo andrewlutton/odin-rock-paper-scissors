@@ -30,29 +30,37 @@ function roundEval(playerSelection, computerSelection) {
         playerSelection === "Rock" && computerSelection === "Scissors" ||
         playerSelection === "Paper" && computerSelection === "Rock" ||
         playerSelection === "Scissors" && computerSelection === "Paper") {
-        
-            message = "You win! " + playerSelection + " beats " + computerSelection;
+
+        message = "You win! " + playerSelection + " beats " + computerSelection;
     } else {
         message = "You lose! " + computerSelection + " beats " + playerSelection;
     }
     return (message);
 }
 
-function playRound() {
+//Get player selection
+function playerPlay() {
     let playerString = "";
     while (playerString === "") {
-        
+
         let str = prompt("Select Rock, Paper, or Scissors:");
         str = str.toLowerCase();
         str = str.charAt(0).toUpperCase() + str.slice(1);
-        
+
         if (str === "Rock" || str === "Paper" || str === "Scissors") {
             playerString = str;
         } else {
             console.log("Player must choose rock, paper, or scissors. Please try again.");
         }
     }
-    return(playerString);
+    return (playerString);
 }
 
-console.log(playRound());
+//Handle single round
+function playRound() {
+    let computerSelection = computerPlay();
+    let playerSelection = playerPlay();
+    console.log(roundEval(playerSelection, computerSelection));
+}
+
+playRound();
