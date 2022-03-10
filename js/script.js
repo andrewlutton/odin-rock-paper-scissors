@@ -1,6 +1,18 @@
+// Computer plays randomly
 function computerPlay() {
-    let playInt = getRandomInt(1, 3);
-    return(playInt);
+    switch (getRandomInt(1, 3)) {
+        case 1:
+            play = "Rock";
+            break;
+        case 2:
+            play = "Paper";
+            break;
+        case 3:
+            play = "Scissors";
+            break;
+    }
+
+    return(play);
 }
 
 //Get Random Integer between two numbers, inclusive
