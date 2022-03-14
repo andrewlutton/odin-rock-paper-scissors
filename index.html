@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Pape, Scissors!</title>
 </head>
+
 <body>
-    <script src="./js/script.js"></script>
+    <div class="container">
+        <h1>Yoshimi's Battle with the Pink Robots</h1>
+        <p>5 wins to defeat those evil machines. I know you can beat them.</p>
+        
+        <div class="game-container">
+            <div class="button-container">
+                <button class="play-btn" id="rock">Rock!</button>
+                <button class="play-btn" id="paper">Paper!</button>
+                <button class="play-btn" id="scissors">Scissors!</button>
+            </div>
+            <div class="message-container">
+                <p id="player-choice"></p>
+                <p id="computer-choice"></p>
+                <p id="results-message"> Choose your weapon...</p>
+                <h2>Score:</h2>
+            </div>
+        </div>
+    </div>
+    <script src="./js/script.js" defer></script>
 </body>
+
 </html>
